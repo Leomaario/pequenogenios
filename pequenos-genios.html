@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Pequenos Gênios – Kit de Alfabetização com 100 atividades</title>
-<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" id="site-icon" href="favicon.ico" sizes="any">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@600;800&display=swap">
 <style>
 :root{--bg:#fffdf5;--ink:#1b2a5c;--mute:#4d5a85;--blue:#1e5bd6;--yel:#ffc81e;--ora:#ff7a1a;--grn:#2ea84a;--card:#fff;--soft:#fff3c9;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -213,6 +213,10 @@ var cols=['#ffc81e','#ff7a1a','#2ea84a','#1e5bd6','#e84a8a'];
 function confetti(){for(var c=0;c<40;c++){var d=document.createElement('i');d.className='conf';d.style.left=Math.random()*100+'vw';d.style.background=cols[c%5];d.style.animationDuration=(2+Math.random()*2)+'s';document.body.appendChild(d);setTimeout(function(x){x.remove()},4500,d)}}
 setTimeout(confetti,600);
 document.querySelectorAll('[data-buy]').forEach(function(a){a.addEventListener('click',confetti)});
+var icon=document.getElementById('site-icon');
+var owl='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="31" fill="#ffc81e"/><path d="M12 25 9 10l17 9M52 25l3-15-17 9" fill="#1e5bd6" stroke="#1b2a5c" stroke-width="3" stroke-linejoin="round"/><ellipse cx="32" cy="37" rx="23" ry="22" fill="#1e5bd6" stroke="#1b2a5c" stroke-width="3"/><ellipse cx="23" cy="31" rx="10" ry="11" fill="#fffdf5"/><ellipse cx="41" cy="31" rx="10" ry="11" fill="#fffdf5"/><EYES/><path d="m27 43 5-6 5 6-5 5z" fill="#ff7a1a" stroke="#1b2a5c" stroke-width="2" stroke-linejoin="round"/><path d="M15 43q-8 3-5 12l12-5m27-7q8 3 5 12l-12-5" fill="#ff7a1a" stroke="#1b2a5c" stroke-width="2" stroke-linejoin="round"/></svg>';
+function setOwlEyes(blink){icon.href='data:image/svg+xml,'+encodeURIComponent(owl.replace('<EYES/>',blink?'<path d="M18 31q5 5 10 0m8 0q5 5 10 0" fill="none" stroke="#1b2a5c" stroke-width="3" stroke-linecap="round"/>':'<circle cx="23" cy="31" r="4" fill="#1b2a5c"/><circle cx="41" cy="31" r="4" fill="#1b2a5c"/>'))}
+setInterval(function(){setOwlEyes(true);setTimeout(function(){setOwlEyes(false)},180)},2800);
 })();
 </script>
 </body>
