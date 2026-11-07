@@ -193,6 +193,20 @@ footer a{color:var(--yel);font-weight:800}
 
 <script>
 (function(){
+const visitParams = new URLSearchParams(window.location.search);
+const trackingKeys = ['utm_source', 'utm_campaign', 'utm_medium', 'utm_content', 'utm_term', 'utm_id', 'fbclid'];
+
+document.querySelectorAll('a[data-buy]').forEach(function (link) {
+  const checkout = new URL(link.href);
+  trackingKeys.forEach(function (key) {
+    const value = visitParams.get(key);
+    if (value && !checkout.searchParams.has(key)) {
+      checkout.searchParams.set(key, value);
+    }
+  });
+  link.href = checkout.href;
+});
+
 var track=document.querySelector('.track'),n=track.children.length,i=0,t;
 var caps=['O kit completo 🎒','Vogais: qual é a letra inicial?','Sons e letras','Caça-palavras da escola','Leia e desenhe'];
 var dots=document.querySelector('.dots'),cap=document.querySelector('.cap');
